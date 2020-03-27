@@ -17,9 +17,24 @@ import infermedica_api
 infermedica_api.configure(app_id='dd7d8ffc', app_key='805d0529637017534b6b5726f942c5b9')
 
 class TrackerCreate(LoginRequiredMixin, CreateView):
-  model = Tracker
-  fields = '__all__'
-  success_url = '/trackers/'
+    model = Tracker
+    fields = '__all__'
+    success_url = '/trackers/'
+  
+    # def post(self, request):
+    #     symptoms        = Symptoms.objects.filter(user_id = request.user)
+    #     form            = SearchForm()
+    #     symptomForm     = SymptomsForm(request.POST)
+    #     if request.method == "POST":
+    #        if symptomForm.is_valid():
+    #            new_symptom          = symptomForm.save(commit=False)
+    #            new_symptom.user_id  = request.user.id
+    #            new_symptom.save()
+    #     else:
+    #         print('false')
+
+    #     context = {'form': form, 'symptoms': symptoms}
+    #     return render(request, self.template_name, context)
 
 class TrackerUpdate(LoginRequiredMixin, UpdateView):
   model = Tracker

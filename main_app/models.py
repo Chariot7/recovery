@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class Tracker(models.Model):
     tracker_name    = models.CharField(max_length=100)
     label1          = models.CharField(max_length=100)
@@ -21,6 +22,9 @@ class Record(models.Model):
     timestamp       = models.TimeField(auto_now_add=True)
     tracker         = models.ForeignKey(Tracker, on_delete=models.CASCADE)
 
+SYMPTOMS = (
+    ('1', Symptoms.objects.filter(user_id = request.user).first)
+)
     def __int__(self):
         return self.input1, self.input2, self.input3
 
